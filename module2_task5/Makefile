@@ -31,11 +31,5 @@ test: ## test hitting the endpoint
     make integration-tests
     make validate
 
-unit-tests: ## run unit-tests
-    go test -v -short -coverprofile=coverage-units.out
-
-integration-tests: ## run intregrated tests
-    go test -v  -coverprofile=coverage-integrations.out
-
 help: ## Makefile help
     @fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
