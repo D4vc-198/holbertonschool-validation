@@ -39,3 +39,6 @@ integration-tests: ## run intregrated tests
 
 help: ## Show this help usage
     @fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
+
+help:## Makefile help
+   	-grep "##" Makefile | head -n -1 | tr -d '#'
