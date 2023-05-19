@@ -37,8 +37,5 @@ unit-tests: ## run unit-tests
 integration-tests: ## run intregrated tests
     go test -v  -coverprofile=coverage-integrations.out
 
-help: ## Show this help usage
+help: ## Makefile help
     @fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
-
-help:## Makefile help
-   	-grep "##" Makefile | head -n -1 | tr -d '#'
