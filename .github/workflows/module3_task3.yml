@@ -46,3 +46,6 @@ jobs:
           with:
           files: ./module3_task3/awesome-website.zip
           body_path: ./module3_task3/DEPLOY.md
+         with:
+             tag_name: ${{ github.run_number}}
+             release_name: Release ${{ github.run_number }}
