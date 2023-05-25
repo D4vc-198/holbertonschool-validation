@@ -1,7 +1,7 @@
 ---
 name: module3_task1
 
-"on":  # do something on push to main
+on:
   push:
   branches:
     - master
