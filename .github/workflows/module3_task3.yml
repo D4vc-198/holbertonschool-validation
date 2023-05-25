@@ -14,17 +14,17 @@ jobs:
         with:
           repository: ''
 
-      - run: cd module3_task2/ && ./setup.sh
+      - run: cd module3_task3/ && ./setup.sh
 
       - run: npm install -g markdownlint-cli
 
-      - run: cd module3_task2/ && make lint
+      - run: cd module3_task3/ && make lint
 
-      - run: cd module3_task2/ && make test
+      - run: cd module3_task3/ && make test
 
-      - run: cd module3_task2/ && make package
+      - run: cd module3_task3/ && make package
 
-      - run: cd module3_task2/ && make help && make build
+      - run: cd module3_task3/ && make help && make build
 
   create-release:
     needs: build
