@@ -14,6 +14,8 @@ jobs:
         with:
           repository: ''
 
+      - name: Installing hugo
       - run: cd module3_task1/ && ./setup.sh
 
-      - run: cd module3_task1/ && make help
+      - name: Validate the makefile
+      - run: cd module3_task1/ && make help && make build
