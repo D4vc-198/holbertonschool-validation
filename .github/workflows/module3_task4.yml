@@ -73,7 +73,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ github.ref_name }}
           #release_name: Release ${{ github.ref }}
           #files: ./module3_task3/awesome-website.zip
           #body_path: ./module3_task4/DEPLOY.md
