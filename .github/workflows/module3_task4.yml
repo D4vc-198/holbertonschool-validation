@@ -21,30 +21,30 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Clone the repository
+      - name: Clone the repositor_1y
         uses: actions/checkout@v3
 
-      - name: installing Hugo
+      - name: installing Hugo_2
         run: cd ./module3_task4 && ./setup.sh
 
-      - name: install the Markdownlint
+      - name: install the Markdownlint_3
         run: npm install -g markdownlint-cli
 
-      - name: Lint the files
+      - name: Lint the files_4
         run: cd module3_task4 && make lint
 
-      - name: Tests
+      - name: Tests_5
         run: cd module3_task4 && make test
 
-      - name: Archives the files
+      - name: Archives the files_6
         run: cd module3_task4 && make package
 
-      - name: validate the Makefile
+      - name: validate the Makefile_7
         run: cd module3_task4 && make help && make build
 
   create-release:
     needs: build
-    if: startsWith(github.ref, 'refs/tags/')
+    #if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-22.04
     steps:
       - name: Check out code
