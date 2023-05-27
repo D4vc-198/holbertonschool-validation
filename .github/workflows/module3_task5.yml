@@ -8,7 +8,7 @@ on:
       - master
 
     tags:
-      - '1.*.*'
+      - '*'
 
   schedule:
     - cron: '0 0 * * *'
@@ -77,7 +77,7 @@ jobs:
 
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ github.ref_name}}
