@@ -58,7 +58,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         timeout-minutes: 1
 
-        Create Release:
+        create-elease:
       - name: Create Release
         id: create_release
         uses: actions/checkout@v3
