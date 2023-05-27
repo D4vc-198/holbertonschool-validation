@@ -4,10 +4,11 @@ name: module3_task4
 on:
   push:
     branches:
+      - main
       - master
 
     tags:
-      - '1.0.0'
+      - '*'
 
   schedule:
     - cron: '0 0 * * *'
@@ -18,39 +19,36 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-    permissions:
-        contents: write
-        id-token: write
 
     steps:
-      - name: Clone the repositor_1y
+      - name: Clone the repository
         uses: actions/checkout@v3
 
-      - name: installing Hugo_2
+      - name: installing Hugo
         run: cd ./module3_task4 && ./setup.sh
 
-      - name: install the Markdownlint_3
+      - name: install the Markdownlint
         run: npm install -g markdownlint-cli
 
-      - name: Lint the files_4
+      - name: Lint the files
         run: cd module3_task4 && make lint
 
-      - name: Tests_5
+      - name: Tests
         run: cd module3_task4 && make test
 
-      - name: Archives the files_6
+      - name: Archives the files
         run: cd module3_task4 && make package
 
-      - name: validate the Makefile_7
+      - name: validate the Makefile
         run: cd module3_task4 && make help && make build
 
   create-release:
     needs: build
-    #if: startsWith(github.ref, 'refs/tags/')
+    if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-22.04
     steps:
       - name: Check out code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: install the Markdownlint
         run: npm install -g markdownlint-cli
@@ -61,24 +59,11 @@ jobs:
       - name: Archives the files
         run: cd module3_task4 && make package
 
-      - name: GitHub Tag Name example
-        run: |
-            echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-            echo "Tag name from github.ref_name: ${{  github.ref_name }}"
-
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref_name }}
-          #release_name: Release ${{ github.ref_name }}
-          body: |
-            Changes in this Release
-            - First change
-            - Second change
-          draft: false
-          prerelease: false}
-          #files: ./module3_task3/awesome-website.zip
-          #body_path: ./module3_task4/DEPLOY.md
+          files: ./module3_task3/awesome-website.zip
+          body_path: ./module3_task4/DEPLOY.md
